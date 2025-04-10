@@ -1,0 +1,7 @@
+# Git hub link
+https://github.com/MuhammadAlmursii/Loan-Approval-Analysis/blob/main/loan1.2_final.ipynb 
+https://medium.com/@maike_rar/eda-on-loan-prediction-dataset-5f0af5a8dd00
+
+https://github.com/shrikant-temburwar/Loan-Prediction-Dataset/blob/master/LoanPrediction.ipynb
+
+https://github.com/limchiahooi/loan-approval-prediction/blob/master/loan-approval-prediction.ipynb
