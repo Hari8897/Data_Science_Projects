@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FlaskMLmodel",
     "\\FlaskMLmodel\\app",
-    "\\FlaskMLmodel\\app\\templates"
+    "\\FlaskMLmodel\\app\\templates",
+    "\\Flight-Price-Prediction",
+    "\\Flight-Price-Prediction\\myapp"
   ],
-  "SelectedNode": "\\FlaskMLmodel\\app\\preprocessing.py",
+  "SelectedNode": "\\Flight-Price-Prediction",
   "PreviewInSolutionExplorer": false
 }
