@@ -5,15 +5,18 @@ import axios from 'axios';
 
 function FlightPricePredictor() {
   const [formData, setFormData] = useState({
-    airline: '',
-    source_city: '',
-    departure_time: '',
-    total_stops: '',
-    arrival_time: '',
-    destination_city: '',
-    class: '',
-    departure_date: ''
-  });
+  airline: 'AirAsia',
+  source_city: 'Delhi',
+  departure_time: 'Morning',
+  stops: 'one',
+  arrival_time: 'Night',
+  destination_city: 'Mumbai',
+  class: 'Economy',
+  departure_date: '2025-11-10'
+});
+
+  console.log('Sending data:', formData);
+
 
   const [prediction, setPrediction] = useState(null);
 
@@ -29,7 +32,8 @@ function FlightPricePredictor() {
     try {
       const response = await axios.post('http://127.0.0.1:5000/predict', formData);
       if (response.status === 200) {
-        setPrediction(response.data.predicted_price);
+        setPrediction(response.data.prediction);  // ✅ matches Flask key
+
       } else {
         console.error('Error fetching prediction:', response.statusText);
       }
@@ -85,7 +89,7 @@ function FlightPricePredictor() {
         {/* Number of Stops Field */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <label className="text-gray-700">Number of Stops</label>
-          <select name="total_stops" value={formData.total_stops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          <select name="stops" value={formData.stops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
             <option value="">Select Stops</option>
             <option value="zero">Zero</option>
             <option value="one">One</option>
@@ -131,7 +135,7 @@ function FlightPricePredictor() {
           </select>
         </div>
 
-        {/* Departure Date Field */}
+        {/* Departure Date Field }*/}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <label className="text-gray-700">Departure Date</label>
           <input type="date" name="departure_date" value={formData.departure_date} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
@@ -140,15 +144,14 @@ function FlightPricePredictor() {
         <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition">
           Predict Price
         </button>
-      </form>
-
-      <div className="mt-6 text-center text-xl font-semibold">
+        <div className="mt-6 text-center text-xl font-semibold" id='result'>
         {prediction !== null && (
           <div>
             Predicted Flight Price: <span className="text-green-600">₹{prediction}</span>
           </div>
         )}
       </div>
+      </form>      
     </div>
   );
 }

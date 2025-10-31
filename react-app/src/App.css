@@ -17,11 +17,13 @@ form {
 }
 
 label {
-  display: block;
+  display:box;
+  font-size: 1em;
   margin-bottom: 10px;
   font-weight: bold;
   color: #141415;
-  justify-content: left;
+  justify-self: start;
+  text-align: left;
 }
 input, select {
   width: 100%;
@@ -30,55 +32,31 @@ input, select {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  text-align: left;
 } 
 button {
   padding: 10px 15px;
-  background-color: #2f8ad5;
-  color: white;
+  background-color: #8191e2;
+  color: rgb(39, 35, 35);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 button:hover {
   background-color: #218838;
+  letter-spacing: normal  ;
 }
 .result {
+
   margin-top: 20px;
   font-size: 1.2em;
   color: #555;
 }
-select {
-  text-align: left;
-}
-select option {
-  text-align: left;
-}
-label {
-  text-align: left;
-}
-input {
-  text-align: left;
-}
-input::placeholder {
-  text-align: left;
-}
-button {
-  text-align: center;
-}
-button:hover {
-  text-align: center;
-}
-.result {
-  text-align: center;
-}
-form {
-  text-align: left;
-}
-h1 {
-  text-align: center;
-}
-.App {
-  text-align: center;
+#result {
+  background: #55d163;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #555;
 }
 
 

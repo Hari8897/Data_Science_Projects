@@ -21,7 +21,8 @@ class_dict = {'Economy': 0, 'Business': 1}
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
+    data = request.get_json()
+    print("Received data:", data) 
     try:
         airline = airline_dict[data['airline']]
         source_city = source_dict[data['source_city']]
@@ -34,7 +35,8 @@ def predict():
         # Calculate date difference
         departure_date = datetime.strptime(data['departure_date'], '%Y-%m-%d')
         date_diff = (departure_date - datetime.today()).days + 1
-
+        # You can include date_diff in features if your model uses it
+        
         # Prepare features for prediction
         features = [airline, source_city, departure_time, stops, arrival_time, destination_city, travel_class, date_diff]
         prediction = model.predict([features])[0]
@@ -49,7 +51,7 @@ if __name__ == '__main__':
     app.run(debug=True)
     # Test predictions
     sample_data = {
-        'airline': 'AirAsia',
+        'Airline': 'AirAsia',
         'source_city': 'Delhi',
         'departure_time': 'Morning',
         'stops': 'one',
