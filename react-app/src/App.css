@@ -17,7 +17,7 @@ form {
 }
 
 label {
-  display:box;
+  display:flex;
   font-size: 1em;
   margin-bottom: 10px;
   font-weight: bold;

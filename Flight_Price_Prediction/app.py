@@ -22,7 +22,6 @@ class_dict = {'Economy': 0, 'Business': 1}
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
-    print("Received data:", data) 
     try:
         airline = airline_dict[data['airline']]
         source_city = source_dict[data['source_city']]
@@ -38,7 +37,7 @@ def predict():
         # You can include date_diff in features if your model uses it
         
         # Prepare features for prediction
-        features = [airline, source_city, departure_time, stops, arrival_time, destination_city, travel_class, date_diff]
+        features = [airline, source_city, departure_time, stops, arrival_time, destination_city, travel_class]
         prediction = model.predict([features])[0]
 
         return jsonify({'prediction': round(prediction, 2)})
@@ -50,19 +49,19 @@ def predict():
 if __name__ == '__main__':
     app.run(debug=True)
     # Test predictions
-    sample_data = {
-        'Airline': 'AirAsia',
-        'source_city': 'Delhi',
-        'departure_time': 'Morning',
-        'stops': 'one',
-        'arrival_time': 'Night',
-        'destination_city': 'Mumbai',
-        'class': 'Economy',
-        'departure_date': (datetime.today() + timedelta(days=10)).strftime('%Y-%m-%d')
-    }
-    with app.test_client() as client:
-        response = client.post('/predict', json=sample_data)
-        print('Test Prediction Response:', response.json)
+    # sample_data = {
+    #     'Airline': 'AirAsia',
+    #     'source_city': 'Delhi',
+    #     'departure_time': 'Morning',
+    #     'stops': 'one',
+    #     'arrival_time': 'Night',
+    #     'destination_city': 'Mumbai',
+    #     'class': 'Economy',
+    #     'departure_date': (datetime.today() + timedelta(days=10)).strftime('%Y-%m-%d')
+    # }
+    # with app.test_client() as client:
+    #     response = client.post('/predict', json=sample_data)
+    #     print('Test Prediction Response:', response.json)
         
     
         

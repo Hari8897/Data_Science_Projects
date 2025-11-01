@@ -5,18 +5,17 @@ import axios from 'axios';
 
 function FlightPricePredictor() {
   const [formData, setFormData] = useState({
-  airline: 'AirAsia',
-  source_city: 'Delhi',
-  departure_time: 'Morning',
-  stops: 'one',
-  arrival_time: 'Night',
-  destination_city: 'Mumbai',
-  class: 'Economy',
-  departure_date: '2025-11-10'
+  airline: '',
+  source_city: '',
+  departure_time: '',
+  stops: '',
+  arrival_time: '',
+  destination_city: '',
+  class: '',
+  departure_date: ''
 });
 
-  console.log('Sending data:', formData);
-
+  // console.log('Sending data:', formData); // ✅ log formData being sent to the API
 
   const [prediction, setPrediction] = useState(null);
 
@@ -79,10 +78,12 @@ function FlightPricePredictor() {
           <label className="text-gray-700">Departure Time</label>
           <select name="departure_time" value={formData.departure_time} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
             <option value="">Select Departure Time</option>
+            <option value="Night">Night</option>
+            <option value="Morning">Morning</option>
+            <option value="Early_Morning">Early Morning</option>
             <option value="Afternoon">Afternoon</option>
             <option value="Evening">Evening</option>
-            <option value="Morning">Morning</option>
-            <option value="Night">Night</option>
+            <option value="Late_Night">Late Night</option>
           </select>
         </div>
 
